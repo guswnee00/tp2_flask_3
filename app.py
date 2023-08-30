@@ -11,6 +11,8 @@ from prediction_utils import allowed_file, load_yolo_model, predict_image
 # 플라스크 클래스명 지정
 app = Flask(__name__, static_folder='static')
 
+os.environ['PYOPENGL_PLATFORM'] = 'osmesa'
+
 # 에러 페이지
 @app.errorhandler(404)
 def image_upload_retry(error):
