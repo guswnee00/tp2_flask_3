@@ -45,3 +45,4 @@ ultralytics==8.0.166
 urllib3==2.0.4
 Werkzeug==2.3.7
 zipp==3.16.2
+libgl1-mesa-glx
