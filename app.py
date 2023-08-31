@@ -6,12 +6,10 @@
 
 import os
 from flask import Flask, render_template, request, flash
-from prediction_utils import allowed_file, load_yolo_model, predict_image
+from prediction_utils import *
 
 # 플라스크 클래스명 지정
-app = Flask(__name__, static_folder='static')
-
-os.environ['PYOPENGL_PLATFORM'] = 'osmesa'
+app = Flask(__name__)
 
 # 에러 페이지
 @app.errorhandler(404)
@@ -51,10 +49,10 @@ def main():
 
             # 이미지를 YOLO 모델로 예측
             predictions = predict_image(yolo_model, image_path)
-            
+
             # 이미지를 페이지에 띄워주기 위해 이미지 경로와 예측 결과를 템플릿으로 전달
             return render_template('main.html', image_path=image_path, predictions=predictions)
         
 # 웹 앱 실행
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=8000)
+    app.run(debug=False)
